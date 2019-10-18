@@ -7,9 +7,8 @@
 
 ## What this is
 
-The tools to build complex types
+The tools to read and write complex types
 
-- `type` vs `interface`
 - intersection types
 - union types
 - generic types
@@ -18,7 +17,7 @@ The tools to build complex types
 - `unknown`
 - `never`
 - conditional types
-- `infer`
+- `infer` keyword
 - examples in the wild \*
 
 * if we have enough time

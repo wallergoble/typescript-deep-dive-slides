@@ -12,6 +12,8 @@ namespace ConditionalTypeExample {
    */
   type Exclude<T, U> = T extends U ? never : T
 
+  type UserProperties = keyof User
+
   // Hover over me
   type UserPropertiesWithoutId = Exclude<keyof User, 'id'>
 }

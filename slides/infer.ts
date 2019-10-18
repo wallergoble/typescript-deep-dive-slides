@@ -1,9 +1,7 @@
-/* prettier-ignore-start */
-
 namespace InferExample {
   // WARNING: this is where things get crazy 🤯🤯🤯
 
-  // infer is pattern matching on types to some extent
+  // infer is pattern matching on types
   // only usable within the extends clause of a conditional type
   // can only be used in the true branch of the conditional type
 
@@ -39,5 +37,3 @@ namespace InferExample {
 }
 
 // Any questions?
-
-/* prettier-ignore-end */

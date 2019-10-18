@@ -1,28 +1,27 @@
-<!-- prettier-ignore-start -->
- _____                                _       _     ____
-|_   _|   _ _ __   ___  ___  ___ _ __(_)_ __ | |_  |  _ \  ___  ___ _ __
-  | || | | | '_ \ / _ \/ __|/ __| '__| | '_ \| __| | | | |/ _ \/ _ \ '_ \
-  | || |_| | |_) |  __/\__ \ (__| |  | | |_) | |_  | |_| |  __/  __/ |_) |
-  |_| \__, | .__/ \___||___/\___|_|  |_| .__/ \__| |____/ \___|\___| .__/
-      |___/|_|                         |_|                         |_|
- ____  _
-|  _ \(_)_   _____
-| | | | \ \ / / _ \
-| |_| | |\ V /  __/
-|____/|_| \_/ \___|
+# Typescript Deep Dive
 
-<!-- prettier-ignore-end -->
+## Who Am I?
 
-# Who Am I?
+- Waller Goble
+- he/him
+- first conference talk (please clap)
+- https://twitter.com/wallergoble - follow me!
+- consultant at Thoughtworks
 
-Waller Goble
+## Thoughtworks
 
-he/him
+- founded in 1993 (same)
+- goal of being a 100 year company
+- > 30% of consultants are underrepresented minorities in tech
 
-first conference talk
+### Three Pillars of how we work
 
-https://twitter.com/wallergoble - me
+- Sustainable Business
+- Software Excellence
+- Social Justice
 
-https://www.thoughtworks.com - consultant
+come talk to me about all this after
 
-Consultant
+# We're hiring!
+
+https://www.thoughtworks.com/careers

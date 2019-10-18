@@ -2,11 +2,19 @@ import { User } from './lib'
 
 namespace MappedTypeExample {
   // Mapped type: creates a new type which transforms each property in the old type *in the same way*.
+  // It's a way iterate over types and modify them
 
-  // Nullable takes in a type and converts the type of all its members to the union of their type and null
+  // Let's look at an example
+
+  // Nullable takes in a type and converts the type of all its members to the union of that type and null
   type Nullable<T> = {
     [P in keyof T]: T[P] | null
   }
+
+  // What's going on here?
+  // in?
+  // keyof T?
+  // T[P] is a lookup
 
   type User = {
     firstName: string
@@ -15,23 +23,26 @@ namespace MappedTypeExample {
     id: number
   }
 
-  type UserKeys = keyof User
+  // What nullable did, unwrapped
 
-  // What's going on here?
-  // in?
-  // keyof?
-  // T[P] is an example of a look up type, or indexed access type
+  type NullableUser = {
+    firstName: string | null
+    lastName: string | null
+    email: string | null
+    id: number | null
+  }
 
-  const myUser: User = {
-    firstName: 'string',
-    lastName: 'string',
+  const wallerWithPartsMissing: User = {
+    firstName: 'Waller',
+    lastName: null,
+    email: 'waller.go@gmail.com',
     id: 12345,
-    email: undefined,
   }
 
   const waller: Nullable<User> = {
     firstName: 'Waller',
-    lastName: undefined,
+    // no error
+    lastName: null,
     id: 12345,
     email: 'waller.go@gmail.com',
   }
@@ -42,6 +53,17 @@ namespace MappedTypeExample {
   // --------- Any questions? ---------
 
   // --------- Optional Type Modifier - ? ---------
+
+  // ? makes things optional
+
+  type UserWithOptionalProperties = {
+    firstName?: string
+    lastName?: string
+    email?: string
+    id?: number
+  }
+
+  // but who wants to type that? what if we want both?
 
   // Takes in a type and makes all of its properties optional
   type Partial<T> = {

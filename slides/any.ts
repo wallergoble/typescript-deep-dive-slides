@@ -21,4 +21,7 @@ namespace AnyExample {
   //   first: 'Waller',
   //   last: 'Goble',
   // }
+
+  // my recommendation:
+  // has it's uses, but don't just put it everywhere
 }

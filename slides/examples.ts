@@ -7,23 +7,33 @@ namespace ExamplesExample {
   // --------------- RequireAtLeastOne -----------------
 
   // type-fest/source/require-at-least-one.d.ts
-  // All of this is straight out of that file
 
   // Required for except
+
+  // What does Pick do?
   type Pick<T, K extends keyof T> = {
     [P in K]: T[P]
   }
 
+  // Hover over me
   type PickedUser = Pick<User, 'email' | 'firstName'>
 
   // Required for RequireAtLeastOne
   // What is ObjectType here? KeysType?
+
+  // What does Except do?
   type Except<ObjectType, KeysType extends keyof ObjectType> = Pick<
     ObjectType,
     Exclude<keyof ObjectType, KeysType>
   >
 
+  // Hover over me
   type UserExceptId = Except<User, 'id'>
+
+  // What does this do?
+  type Required<T> = {
+    [P in keyof T]-?: T[P]
+  }
 
   // Any questions? It's about to get hairy
 

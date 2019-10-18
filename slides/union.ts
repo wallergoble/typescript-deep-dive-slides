@@ -1,9 +1,7 @@
-import { ReactChild, ReactFragment, ReactPortal } from 'react'
-
 namespace UnionExample {
   // Union type: describes a value that can be one of several types
 
-  // Straight out of type-fest
+  // Straight out of type-fest, an open source type library
   type Primitive =
     | null
     | undefined
@@ -14,10 +12,16 @@ namespace UnionExample {
     | bigint
 
   const hello: Primitive = 'world'
+  const bigOlNumber: Primitive = 9007199254740991
+
+  const obj: Primitive = {
+    hello: 'world',
+  }
 
   // Any questions?
 
   // ------------- keyof ----------------
+  // takes in a type and returns a union of the type's properties
 
   type User = {
     firstName: string
@@ -27,6 +31,8 @@ namespace UnionExample {
   }
 
   type UserProperties = keyof User
+
+  const isThisAUserProperty: UserProperties = 'stuff'
 
   // --------- Any questions? ---------
 
