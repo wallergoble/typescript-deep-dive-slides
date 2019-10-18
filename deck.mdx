@@ -28,18 +28,17 @@ export { default as theme } from './theme'
 
 # Who Am I?
 
-Waller Goble
+@wallergoble
+
 he/him
 
-## Picture of me
+<img
+  src="./assets/tw-logo.svg"
+  alt="Thoughtworks"
+  style={{ height: 300, width: '100%' }}
+/>
 
-#### he/him
-
-## Thoughtworks logo
-
-<img src="./assets/tw-logo.svg" alt="Thoughtworks" />
-
-## We're hiring!
+We're hiring!
 
 ---
 
@@ -110,6 +109,21 @@ type BufferEncoding = "ascii"
 
 ---
 
+`keyof`
+
+<TypescriptCodeBlock>
+{`type Fruit = {
+  color: string
+  tastiness: number
+  price: number
+}\n
+type FruitKeys = keyof Fruit
+// 'color' | 'tastiness' | 'price'`}
+
+</TypescriptCodeBlock>
+
+---
+
 # Generics
 
 - dynamic type generation
@@ -117,19 +131,31 @@ type BufferEncoding = "ascii"
 <TypescriptCodeBlock>
   {`// Record<K, T>
 // Constructs a type with a set of properties K of type T
-type NumberMap = Record<string, number>
 type ObjectMap = Record<string, object>
-`}
+type NumberMap = Record<string, number>
+type StringMap = Record<string, string>
+type AnyMap = Record<string, any>`}
 </TypescriptCodeBlock>
 
 ---
 
 <TypescriptCodeBlock>
-  {`type TaxesProperties = 'city' | 'state' | 'county'
-type Taxes = Record<TaxesProperties, number>`}
+  {`type UserProperties = 'firstName' | 'lastName' | 'email'\n
+type User = Record<UserProperties, string>`}
 </TypescriptCodeBlock>
+<TypescriptCodeBlock>
+{`const waller: User = {
+  firstName: 'Waller',
+  lastName: 'Goble',
+  email: 'waller.go@gmail.com',
+}\n
+expectType<{
+  firstName: string
+  lastName: string
+  email: string
+}>(waller)`}
 
-\*
+</TypescriptCodeBlock>
 
 ---
 
@@ -139,23 +165,162 @@ type Taxes = Record<TaxesProperties, number>`}
 interface Component<
   Props = {},
   State = {},
-  SnapShot = any
 >`}</TypescriptCodeBlock>
 
 \* modified for readability
 
 ---
 
+What if I want to make a lot of properties generic?
+
+<TypescriptCodeBlock>{`
+interface MyCra<
+  Props = {},
+  State = {},
+>`}</TypescriptCodeBlock>
+
+\* modified for readability
+
 ---
 
 # Mapped Types
 
-<TypescriptCodeBlock>{`// @types/react/index.d.ts*
-interface Component<
-  Props = {},
-  State = {},
-  SnapShot = any
->`}</TypescriptCodeBlock>
+---
+
+<TypescriptCodeBlock>
+  {`type Partial<T> = {
+  [P in keyof T]?: T[P];
+}\n
+const wallerNoLastName: Partial<User> = {
+  firstName: 'Waller',
+  email: 'waller.go@gmail.com',
+}
+// No error`}
+</TypescriptCodeBlock>
+
+```notes
+
+```
+
+---
+
+<TypescriptCodeBlock>
+  {`
+  type Nullable<T> = {
+  [P in keyof T]: T[P] | null;
+}\n
+const waller: Nullable<User> = {
+  firstName: 'Waller',
+  lastName: 'Goble',
+  email: 'waller.go@gmail.com',
+}\n
+waller.email = null
+// No error
+`}
+</TypescriptCodeBlock>
+
+---
+
+<TypescriptCodeBlock>
+  {`type Readonly<T> = {
+  readonly [P in keyof T]: T[P];
+}\n
+const definitelyGonnaBeWaller: Readonly<User> = {
+  firstName: 'Waller',
+  lastName: 'Goble',
+  email: null,
+}\n
+definitelyGonnaBeWaller.firstName = 'Wilma'
+// Error: Cannot assign to 'firstName' because it is a read-only property.`}
+</TypescriptCodeBlock>
+
+---
+
+# Putting it all together
+
+<TypescriptCodeBlock>
+  {`type ReallyCoolUser = Partial<Nullable<Readonly<User>>>\n
+const strangeWaller: ReallyCoolUser = {
+  firstName: 'Waller',
+  lastName: null,
+  // email is undefined
+}`}
+</TypescriptCodeBlock>
+
+---
+
+What if I want to remove a modifier?
+
+---
+
+<TypescriptCodeBlock>
+  {`type ReallyCoolUser = Partial<Nullable<Readonly<User>>>\n
+type Mutable<T> = {
+\ \ -readonly [P in keyof T]: T[P]
+}\n
+const wallerCanChange: Mutable<ReallyCoolUser> = {
+  firstName: 'Waller',
+  lastName: null,
+  // email is undefined
+}\n
+wallerCanChange.lastName = 'Goble'
+// no error`}
+
+</TypescriptCodeBlock>
+
+```notes
+
+```
+
+---
+
+## unknown
+
+- an attempted improvement on `any`
+- forces the developer to check any usage of the value
+
+---
+
+<TypescriptCodeBlock>
+  {``}
+
+</TypescriptCodeBlock>
+
+---
+
+# `never`
+
+---
+
+## never
+
+---
+
+conditional
+
+---
+
+infer keyword
+
+---
+
+Mapped Type Modifiers: `?`
+
+<TypescriptCodeBlock>{`// @types/react/index.d.ts*`}</TypescriptCodeBlock>
+
+---
+
+Mapped Type Modifiers: `readonly`
+
+---
+
+Mapped Type Modifiers: `-`
+
+---
+
+Mapped Type Modifiers: `+`
+
+kinda weird
 
 ---
 
@@ -166,6 +331,14 @@ type best practices
 interface vs type
 strict mode
 type pragmatism: cf compose ramda definitiom
+
+---
+
+FEEDBACK
+
+gimme
+
+## link here
 
 ---
 

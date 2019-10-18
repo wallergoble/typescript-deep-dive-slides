@@ -80,17 +80,21 @@ import {
   xcode,
   xt256,
   zenburn,
+  a11yLight,
 } from 'react-syntax-highlighter/dist/styles/hljs'
 
 const TypescriptCodeBlock = props => {
-  const { children, showLineNumbers = true } = props
+  const { children, showLineNumbers = false } = props
 
   return (
     <SyntaxHighlighter
       showLineNumbers={showLineNumbers}
       language="typescript"
+      customStyle={{
+        fontSize: 100,
+      }}
       customStyle={{ textAlign: 'left' }}
-      style={atelierPlateauLight}>
+      style={a11yLight}>
       {children}
     </SyntaxHighlighter>
   )
