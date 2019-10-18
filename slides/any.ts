@@ -1,5 +1,7 @@
 namespace AnyExample {
-  const getProperty = (obj: any, property: string): any => {
+  // any: literally anything, or nothing
+
+  function getProperty(obj: any, property: string): any {
     if (obj[property]) {
       return obj[property]
     }
@@ -14,10 +16,9 @@ namespace AnyExample {
     },
   }
 
-  const wallersNameObject = getProperty(employee, name)
-
-  wallersNameObject.first = 123
-  // wrong type, uh oh
-  wallersNameObject.lastName = 'Bug'
-  // this property doesn't exist
+  const wallersNameObject: boolean = getProperty(employee, name)
+  // {
+  //   first: 'Waller',
+  //   last: 'Goble',
+  // }
 }

@@ -1,8 +1,32 @@
-import { Router } from 'express'
-import { routeTo } from './lib'
+import { ReactChild, ReactFragment, ReactPortal } from 'react'
 
 namespace UnionExample {
   // Union type: describes a value that can be one of several types
+
+  // Straight out of type-fest
+  type Primitive =
+    | null
+    | undefined
+    | string
+    | number
+    | boolean
+    | symbol
+    | bigint
+
+  const hello: Primitive = 'world'
+
+  // Any questions?
+
+  // ------------- keyof ----------------
+
+  type User = {
+    firstName: string
+    lastName: string
+    email: string
+    id: number
+  }
+
+  type UserProperties = keyof User
 
   // --------- Any questions? ---------
 
@@ -38,33 +62,5 @@ namespace UnionExample {
 
   // --------- Any questions? ---------
 
-//   // --------- Baby Pattern Matching ---------
-
-//   type Employee = {
-//     kind: 'employee'
-//   }
-
-//   type Manager = {
-//     kind: 'manager'
-//   }
-
-//   type Admin = {
-//     landingPage: '/admin'
-//     kind: 'admin'
-//   }
-
-//   type User = Employee | Manager | Admin
-
-//   function login(user: User) {
-//     // hover over kind
-//     switch (user.kind) {
-//       case 'employee':
-//       case 'manager':
-//         routeTo('landing page')
-//       // case 'invalid':
-
-//     }
-//   }
-// }
-
-// --------- Any questions about Union types? ---------
+  // --------- Any questions about Union types? ---------
+}

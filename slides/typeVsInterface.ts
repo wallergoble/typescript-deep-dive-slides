@@ -1,5 +1,6 @@
 import { Diet } from './lib'
 
+// What's this namespace?
 namespace TypeExample {
   // What's the difference between the type keyword and the interface keyword?
   // No really, what is it?
@@ -41,6 +42,7 @@ namespace TypeExample {
 }
 
 // My preference: use type unless you want to use `extends`
-// really doesn't seem to matter
+// how you define types is completely up to preference
+// my recommendation: stay consistent
 
 // --------- Any questions about type vs interface? ---------

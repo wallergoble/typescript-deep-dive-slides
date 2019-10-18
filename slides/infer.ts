@@ -1,14 +1,14 @@
 /* prettier-ignore-start */
 
 namespace InferExample {
+  // WARNING: this is where things get crazy 🤯🤯🤯
+
   // infer is pattern matching on types to some extent
   // only usable within the extends clause of a conditional type
   // can only be used in the true branch of the conditional type
 
   // Exists already
-  type ReturnType<T extends Function> = T extends (...args: any[]) => infer R
-    ? R
-    : any // haven't been able to get here
+  type ReturnType<T> = T extends (...args: any[]) => infer R ? R : never
 
   type Predicate<T> = (arg: T) => boolean
 
@@ -16,14 +16,15 @@ namespace InferExample {
 
   type Testing = number
 
-  type a = ReturnType<Testing>
+  type TestingReturnType = ReturnType<Testing>
 
-  const double = (number: number) => number * 2
+  const triple = (number: number) => number * 3
 
   // Hover over me
-  type DoubleReturnType = ReturnType<typeof double>
+  type TripleReturnType = ReturnType<typeof triple>
 
   // -------------------
+
   // Get the type of the first element in a tuple type
   type First<T extends any[]> = T extends [infer U, ...unknown[]] ? U : never
 
@@ -34,7 +35,9 @@ namespace InferExample {
   const myTuple = tuple('a', 1, true)
 
   // Hover over me
-  type FirstEntriesReturnType = First<typeof myTuple>
+  type FirstOfMyTuple = First<typeof myTuple>
 }
+
+// Any questions?
 
 /* prettier-ignore-end */

@@ -1,18 +1,19 @@
-/* prettier-ignore-start */
+import { User } from './lib'
 
 namespace ConditionalTypeExample {
-  // WARNING: this is where things get crazy 🤯🤯🤯
+  /* conditional types: express non-uniform type mappings
+   * selects one of two possible types based on a condition expressed as a type relationship test
 
-  type NonNullable<T> = T extends null | undefined ? never : T
+   follow the pattern: T extends U ? X : Y
+  */
 
-  type User = null
+  /**
+   * Exclude from T those types that are assignable to U
+   */
+  type Exclude<T, U> = T extends U ? never : T
 
-  type SuperTypeSafeUser = NonNullable<User>
-
-  const example: SuperTypeSafeUser = 1
-  // The type resolves to never, so it's never useful
-
-  // Any questions?
+  // Hover over me
+  type UserPropertiesWithoutId = Exclude<keyof User, 'id'>
 }
 
-/* prettier-ignore-end */
+// ---------- Any questions on conditional types? ------------------

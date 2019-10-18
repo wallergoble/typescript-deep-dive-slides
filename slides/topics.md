@@ -7,9 +7,9 @@
 
 ## What this is
 
-The tools to build
+The tools to build complex types
 
-- `type` vs `inheritance`
+- `type` vs `interface`
 - intersection types
 - union types
 - generic types
@@ -19,4 +19,6 @@ The tools to build
 - `never`
 - conditional types
 - `infer`
-- examples in the wild if we have enough time
+- examples in the wild \*
+
+* if we have enough time

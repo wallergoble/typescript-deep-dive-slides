@@ -8,14 +8,31 @@ namespace MappedTypeExample {
     [P in keyof T]: T[P] | null
   }
 
+  type User = {
+    firstName: string
+    lastName: string
+    email: string
+    id: number
+  }
+
+  type UserKeys = keyof User
+
   // What's going on here?
   // in?
   // keyof?
   // T[P] is an example of a look up type, or indexed access type
 
+  const myUser: User = {
+    firstName: 'string',
+    lastName: 'string',
+    id: 12345,
+    email: undefined,
+  }
+
   const waller: Nullable<User> = {
     firstName: 'Waller',
-    lastName: null,
+    lastName: undefined,
+    id: 12345,
     email: 'waller.go@gmail.com',
   }
 
@@ -26,6 +43,7 @@ namespace MappedTypeExample {
 
   // --------- Optional Type Modifier - ? ---------
 
+  // Takes in a type and makes all of its properties optional
   type Partial<T> = {
     [P in keyof T]?: T[P]
   }
@@ -34,6 +52,7 @@ namespace MappedTypeExample {
   const wallerNoLastNameWithError: User = {
     firstName: 'Waller',
     email: 'waller.go@gmail.com',
+    id: 12345,
   }
 
   const wallerNoLastName: Partial<User> = {
@@ -53,7 +72,8 @@ namespace MappedTypeExample {
   const definitelyGonnaBeWaller: Readonly<User> = {
     firstName: 'Waller',
     lastName: 'Goble',
-    email: null,
+    email: 'waller.go@gmail.com',
+    id: 12345,
   }
 
   definitelyGonnaBeWaller.firstName = 'Wilma'
@@ -68,8 +88,11 @@ namespace MappedTypeExample {
   const strangeWaller: ReallyCoolUser = {
     firstName: 'Waller',
     lastName: null,
+    id: 12345,
     // email is undefined, but we could define it
   }
+
+  strangeWaller.email = 'asdf'
 
   // --------- Any questions? ---------
 
