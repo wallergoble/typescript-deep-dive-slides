@@ -6,8 +6,12 @@ namespace IntersectionExample {
     return {
       ...objectOne,
       ...objectTwo,
-    }
+    };
   }
+
+  let mergedObject = merge({ name: "Annie" }, { age: 30 });
+
+  type Annie = typeof mergedObject;
 }
 
 // --------- Any questions about Intersection types? --------

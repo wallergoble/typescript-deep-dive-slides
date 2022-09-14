@@ -1,4 +1,4 @@
-import { Diet } from './lib'
+import { Diet } from "./lib";
 
 // What's this namespace?
 namespace TypeExample {
@@ -15,9 +15,9 @@ namespace TypeExample {
     * can't extend
   */
   type AnimalType = {
-    legs: number
-    diet: Diet
-  }
+    legs: number;
+    diet: Diet;
+  };
 
   // doesn't work :(
   // type LionType extends AnimalType
@@ -32,17 +32,15 @@ namespace TypeExample {
     * makes me feel like I'm writing Java, which hurts
   */
   interface AnimalInterface {
-    legs: number
-    diet: Diet
+    legs: number;
+    diet: Diet;
   }
 
   interface Lion extends AnimalInterface {
-    sound: 'grrrrrr'
+    sound: "grrrrrr";
   }
 }
 
-// My preference: use type unless you want to use `extends`
-// how you define types is completely up to preference
 // my recommendation: stay consistent
 
 // --------- Any questions about type vs interface? ---------

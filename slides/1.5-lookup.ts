@@ -3,18 +3,18 @@ namespace LookupExample {
   // also known as indexed access type
 
   type User = {
-    firstName: string
-    lastName: string
-    email: string
-    id: number
-  }
+    firstName: string;
+    lastName: string;
+    email: string;
+    id: number;
+  };
 
   // hover over me
-  type IdType = User['id']
+  type IdType = User["id"];
 
   // also works with union literals
 
-  type UserSubset = User['id' | 'email']
+  type UserSubset = User["id" | "email"];
 }
 
 // --------- Any questions about lookup types? --------

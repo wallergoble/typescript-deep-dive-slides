@@ -1,3 +1,5 @@
+# Closing
+
  ______________________
 < thanks for listening >
  ----------------------
@@ -7,10 +9,19 @@
                 ||----w |
                 ||     ||
 
-Link to "slides": https://shorturl.at/jprJZ
-Give me feedback: http://shorturl.at/gpMPT
+## A Warning
 
-Resources:
+<img src='../assets/warning.png'>
+
+
+## Give me feedback:
+
+https://forms.gle/wty1cvfwbqMiMbzDA
+
+<img src='../assets/feedback.png'>
+
+## Resources
+
 https://mariusschulz.com/blog/series/typescript-evolution
 http://www.typescriptlang.org/docs/handbook/advanced-types.html
 https://github.com/sindresorhus/type-fest

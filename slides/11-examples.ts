@@ -1,5 +1,10 @@
-import { User } from './lib'
-import { List } from 'lodash'
+import { List } from "lodash";
+import {
+  GetStaticProps,
+  GetStaticPropsContext,
+  GetStaticPropsResult,
+} from "next";
+import { User } from "./lib";
 
 namespace ExamplesExample {
   // Let's tie it all together
@@ -12,11 +17,11 @@ namespace ExamplesExample {
 
   // What does Pick do?
   type Pick<T, K extends keyof T> = {
-    [P in K]: T[P]
-  }
+    [P in K]: T[P];
+  };
 
   // Hover over me
-  type PickedUser = Pick<User, 'email' | 'firstName'>
+  type PickedUser = Pick<User, "email" | "firstName">;
 
   // Required for RequireAtLeastOne
   // What is ObjectType here? KeysType?
@@ -25,15 +30,15 @@ namespace ExamplesExample {
   type Except<ObjectType, KeysType extends keyof ObjectType> = Pick<
     ObjectType,
     Exclude<keyof ObjectType, KeysType>
-  >
+  >;
 
   // Hover over me
-  type UserExceptId = Except<User, 'id'>
+  type UserWithoutId = Except<User, "id">;
 
   // What does this do?
   type Required<T> = {
-    [P in keyof T]-?: T[P]
-  }
+    [P in keyof T]-?: T[P];
+  };
 
   // Any questions? It's about to get hairy
 
@@ -47,26 +52,38 @@ namespace ExamplesExample {
     KeysType extends keyof ObjectType = keyof ObjectType
   > = {
     // For each Key in KeysType make a mapped type
-    [Key in KeysType]: (// …by picking that Key's type and making it required
-    Required<Pick<ObjectType, Key>>)
+    [Key in KeysType]: Required<Pick<ObjectType, Key>>; // …by picking that Key's type and making it required
   }[KeysType] &
     // …then, make intersection types by adding the remaining keys to each mapped type.
-    Except<ObjectType, KeysType>
+    Except<ObjectType, KeysType>;
 
   type Responder = {
-    text?: () => string
-    json?: () => string
+    text?: () => string;
+    json?: () => string;
 
-    secure?: boolean
-  }
+    secure?: boolean;
+  };
 
-  const responder: RequireAtLeastOne<Responder, 'text' | 'json'> = {
+  const responder: RequireAtLeastOne<Responder, "text" | "json"> = {
     // try commenting me out
     json: () => '{"message": "ok"}',
     secure: true,
-  }
+  };
 
   // --------------- Any questions? -----------------
+
+  export type InferGetStaticPropsType<T> = T extends GetStaticProps<
+    infer P,
+    any
+  >
+    ? P
+    : T extends (
+        context?: GetStaticPropsContext<any>
+      ) =>
+        | Promise<GetStaticPropsResult<infer P>>
+        | GetStaticPropsResult<infer P>
+    ? P
+    : never;
 
   // from type-fest
 
@@ -81,15 +98,15 @@ namespace ExamplesExample {
       // Pick the keys that should be optional from the base type and make them optional.
       Partial<Pick<BaseType, Keys>> extends infer InferredType // If `InferredType` extends the previous, then for each key, use the inferred type key.
       ? { [KeyType in keyof InferredType]: InferredType[KeyType] }
-      : never
+      : never;
 
   type Foo = {
-    a: number
-    b?: string
-    c: boolean
-  }
+    a: number;
+    b?: string;
+    c: boolean;
+  };
 
-  type SomeOptional = SetOptional<Foo, 'b' | 'c'>
+  type SomeOptional = SetOptional<Foo, "b" | "c">;
 
   // type SomeOptional = {
   // 	a: number;
@@ -114,8 +131,8 @@ namespace ExamplesExample {
      * @return Returns the new flattened array.
      */
     flattenDeep<T>(
-      array: ListOfRecursiveArraysOrValues<T> | null | undefined,
-    ): T[]
+      array: ListOfRecursiveArraysOrValues<T> | null | undefined
+    ): T[];
   }
 
   // --------------- Any questions? -----------------
@@ -125,18 +142,18 @@ namespace ExamplesExample {
   type PropsWithoutRef<P> =
     // Just Pick would be sufficient for this, but I'm trying to avoid unnecessary mapping over union types
     // https://github.com/Microsoft/TypeScript/issues/28339
-    'ref' extends keyof P ? Pick<P, Exclude<keyof P, 'ref'>> : P
+    "ref" extends keyof P ? Pick<P, Exclude<keyof P, "ref">> : P;
 
   /** Ensures that the props do not include string ref, which cannot be forwarded */
   type PropsWithRef<P> =
     // Just "P extends { ref?: infer R }" looks sufficient, but R will infer as {} if P is {}.
-    'ref' extends keyof P
+    "ref" extends keyof P
       ? P extends { ref?: infer R }
         ? string extends R
           ? PropsWithoutRef<P> & { ref?: Exclude<R, string> } // first true branch fo the conditional, using inferred R
           : P
         : P
-      : P
+      : P;
 
   // --------------- Any questions? -----------------
 
@@ -150,8 +167,8 @@ namespace ExamplesExample {
   interface R {
     composeWith<V0, T>(
       composer: (a: any) => any,
-      fns: ComposeWithFns<V0, T>,
-    ): (x0: V0) => T
+      fns: ComposeWithFns<V0, T>
+    ): (x0: V0) => T;
   }
 
   type ComposeWithFns<V0, T> =
@@ -164,7 +181,7 @@ namespace ExamplesExample {
         (x: any) => any,
         (x: any) => any,
         (x: any) => any,
-        (x: V0) => any,
+        (x: V0) => any
       ]
     | [
         (x: any) => T,
@@ -172,16 +189,7 @@ namespace ExamplesExample {
         (x: any) => any,
         (x: any) => any,
         (x: any) => any,
-        (x: V0) => any,
-      ]
-    | [
-        (x: any) => T,
-        (x: any) => any,
-        (x: any) => any,
-        (x: any) => any,
-        (x: any) => any,
-        (x: any) => any,
-        (x: V0) => any,
+        (x: V0) => any
       ]
     | [
         (x: any) => T,
@@ -190,8 +198,7 @@ namespace ExamplesExample {
         (x: any) => any,
         (x: any) => any,
         (x: any) => any,
-        (x: any) => any,
-        (x: V0) => any,
+        (x: V0) => any
       ]
     | [
         (x: any) => T,
@@ -201,8 +208,7 @@ namespace ExamplesExample {
         (x: any) => any,
         (x: any) => any,
         (x: any) => any,
-        (x: any) => any,
-        (x: V0) => any,
+        (x: V0) => any
       ]
     | [
         (x: any) => T,
@@ -213,9 +219,20 @@ namespace ExamplesExample {
         (x: any) => any,
         (x: any) => any,
         (x: any) => any,
-        (x: any) => any,
-        (x: V0) => any,
+        (x: V0) => any
       ]
+    | [
+        (x: any) => T,
+        (x: any) => any,
+        (x: any) => any,
+        (x: any) => any,
+        (x: any) => any,
+        (x: any) => any,
+        (x: any) => any,
+        (x: any) => any,
+        (x: any) => any,
+        (x: V0) => any
+      ];
 
   // lesson learned: type pragmatism
 
