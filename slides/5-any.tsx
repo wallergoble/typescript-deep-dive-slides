@@ -41,4 +41,87 @@ namespace AnyExample {
       </div>
     );
   }
+
+  // Sometimes, any is really what you want
+
+  // from Ramda.composeWith
+
+  /**
+   * Performs right-to-left function composition using transforming function.
+   * With the current typings, all functions must be unary.
+   */
+
+  interface R {
+    composeWith<V0, T>(
+      composer: (a: any) => any,
+      fns: ComposeWithFns<V0, T>
+    ): (x0: V0) => T;
+  }
+
+  type ComposeWithFns<V0, T> =
+    | [(x0: V0) => T]
+    | [(x: any) => T, (x: V0) => any]
+    | [(x: any) => T, (x: any) => any, (x: V0) => any]
+    | [(x: any) => T, (x: any) => any, (x: any) => any, (x: V0) => any]
+    | [
+        (x: any) => T,
+        (x: any) => any,
+        (x: any) => any,
+        (x: any) => any,
+        (x: V0) => any
+      ]
+    | [
+        (x: any) => T,
+        (x: any) => any,
+        (x: any) => any,
+        (x: any) => any,
+        (x: any) => any,
+        (x: V0) => any
+      ]
+    | [
+        (x: any) => T,
+        (x: any) => any,
+        (x: any) => any,
+        (x: any) => any,
+        (x: any) => any,
+        (x: any) => any,
+        (x: V0) => any
+      ]
+    | [
+        (x: any) => T,
+        (x: any) => any,
+        (x: any) => any,
+        (x: any) => any,
+        (x: any) => any,
+        (x: any) => any,
+        (x: any) => any,
+        (x: V0) => any
+      ]
+    | [
+        (x: any) => T,
+        (x: any) => any,
+        (x: any) => any,
+        (x: any) => any,
+        (x: any) => any,
+        (x: any) => any,
+        (x: any) => any,
+        (x: any) => any,
+        (x: V0) => any
+      ]
+    | [
+        (x: any) => T,
+        (x: any) => any,
+        (x: any) => any,
+        (x: any) => any,
+        (x: any) => any,
+        (x: any) => any,
+        (x: any) => any,
+        (x: any) => any,
+        (x: any) => any,
+        (x: V0) => any
+      ];
+
+  // lesson learned: type pragmatism
+
+  // ~any~ questions?
 }

@@ -31,12 +31,26 @@ namespace UnknownExample {
     try {
       let result = canFail();
     } catch (error) {
+      // this is unknown because of the compiler option --useUnknownInCatchVariables
       // won't let us use message here because it's unknown
       console.error("uh oh", error.message);
 
       if (error instanceof Error) {
         console.log("now typescript is happy", error.message);
       }
+    }
+  }
+
+  function doYouReallyKnowWhatYouThrew() {
+    try {
+      throw new Promise((res, _rej) =>
+        setTimeout(() => res("party time"), Math.random())
+      );
+    } catch (wellINormallyCallThisError) {
+      console.log(
+        "logger debugging meets its match",
+        wellINormallyCallThisError
+      );
     }
   }
 }

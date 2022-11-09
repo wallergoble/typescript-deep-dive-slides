@@ -20,8 +20,6 @@ https://forms.gle/wty1cvfwbqMiMbzDA
 
 <img src='../assets/connectfeed2022.png'>
 
-or just yell at me on twitter @wallergoble
-
 ## Resources
 
 https://mariusschulz.com/blog/series/typescript-evolution
