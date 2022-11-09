@@ -52,7 +52,7 @@ namespace UnionExample {
     | "binary"
     | "hex";
 
-  let buffer = new Buffer("hello connect tech", "ascii");
+  let buffer = new Buffer("hello connect.tech", "ascii");
 
   let buffer2 = new Buffer(
     "please don't ask me about buffers",

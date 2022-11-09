@@ -9,10 +9,9 @@
 - Waller Goble
 - he/him
 - bootcamp grad
-- ~~first~~ fourth conference talk (please clap)
+- ~~first~~ fifth conference talk (please clap)
 - https://twitter.com/wallergoble - follow me!
 - eng at Microsoft
-
 
 ## Why this talk?
 
@@ -43,3 +42,4 @@ Exposing you to the tools and techniques needed to read and write complex types
 - examples in the wild
 
 * if we have enough time
+```

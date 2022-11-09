@@ -33,7 +33,7 @@ namespace AnyExample {
 
   // specific uses of any are important, we'll get to them later
 
-  function MyReactComponent(props: { name: string }) {
+  function MyReactComponent(props: $FixMe) {
     return (
       <div>
         hello {props.name}

@@ -9,9 +9,9 @@ namespace IntersectionExample {
     };
   }
 
-  let mergedObject = merge({ name: "Annie" }, { age: 30 });
+  let mergedObject = merge({ name: "Anushka" }, { age: 30 });
 
-  type Annie = typeof mergedObject;
+  type Anushka = typeof mergedObject;
 }
 
 // --------- Any questions about Intersection types? --------

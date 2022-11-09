@@ -18,7 +18,9 @@
 
 https://forms.gle/wty1cvfwbqMiMbzDA
 
-<img src='../assets/feedback.png'>
+<img src='../assets/connectfeed2022.png'>
+
+or just yell at me on twitter @wallergoble
 
 ## Resources
 

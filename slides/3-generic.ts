@@ -1,6 +1,8 @@
 namespace GenericExample {
   // Generic types: provide the ability to make reusable, parametrized types
 
+  // Functions but for your type system
+
   // Takes in T and returns T
 
   function identity<T>(arg: T): T {
@@ -32,6 +34,28 @@ namespace GenericExample {
     b: "b",
     c: 0,
   };
+
+  // Generics can also have constraints
+
+  // only let Arrays in
+  type GetArrayKind<T extends Array<any>> = T[number];
+
+  let twitterUsers = [
+    {
+      handle: "@wallergoble",
+      id: 1337,
+      overalls: true,
+    },
+    {
+      handle: "@kwelch",
+      id: 404,
+      overalls: false,
+    },
+  ];
+
+  type TwitterUser = GetArrayKind<typeof twitterUsers>;
+
+  type NumberMaybe = GetArrayKind<number>;
 }
 
 // ----------- Any questions on Generics? ----------------

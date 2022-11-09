@@ -12,7 +12,7 @@ namespace UnknownExample {
     add(obviouslyANumber, 5);
   }
 
-  class ValueError extends Error() {
+  class ValueError extends Error {
     constructor(message: string) {
       super(message);
     }

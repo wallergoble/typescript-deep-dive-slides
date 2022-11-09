@@ -1,3 +1,9 @@
+import {
+  GetStaticProps,
+  GetStaticPropsContext,
+  GetStaticPropsResult,
+} from "next";
+
 namespace InferExample {
   // WARNING: this is where things get crazy 🤯🤯🤯
 
@@ -37,6 +43,21 @@ namespace InferExample {
 
   // Hover over me
   type FirstOfMyTuple = First<typeof myTuple>;
+
+  // In practice, looks a little more like this:
+
+  export type InferGetStaticPropsType<T> = T extends GetStaticProps<
+    infer P,
+    any
+  >
+    ? P
+    : T extends (
+        context?: GetStaticPropsContext<any>
+      ) =>
+        | Promise<GetStaticPropsResult<infer P>>
+        | GetStaticPropsResult<infer P>
+    ? P
+    : never;
 }
 
 // Any questions?
